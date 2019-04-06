@@ -97,17 +97,17 @@ namespace PLC_DBW_Dynamic_Curve
         {
             if (string.IsNullOrEmpty(plcIp.Text))
             {
-               
+                MessageBox.Show("请输入IP地址");
                 plcIp.Focus();
             }
             if (string.IsNullOrEmpty(plcRack.Text))
             {
-               
+                MessageBox.Show("请输入机架号");
                 plcRack.Focus();
             }
             if (string.IsNullOrEmpty(plcSlot.Text))
             {
-               
+                MessageBox.Show("请输入插槽");
                 plcSlot.Focus();
             }
             else
@@ -135,16 +135,17 @@ namespace PLC_DBW_Dynamic_Curve
         {
             if (string.IsNullOrEmpty(readCycle.Text))
             {
-               
+                MessageBox.Show("请输入采样周期");
                 readCycle.Focus();
             }
             if (string.IsNullOrEmpty(dbNum.Text))
             {
-               
+                MessageBox.Show("请输入DB快");
                 dbNum.Focus();
             }
             if (string.IsNullOrEmpty(dbwNum.Text))
             {
+                MessageBox.Show("请输入DBW");
                 dbwNum.Focus();
             }
            
@@ -153,6 +154,7 @@ namespace PLC_DBW_Dynamic_Curve
                 timer1.Start();
                 dbNum.Enabled = false;
                 dbwNum.Enabled = false;
+                startRead.Enabled = false;
             }
         }
 
@@ -284,6 +286,7 @@ namespace PLC_DBW_Dynamic_Curve
             timer1.Stop();
             dbNum.Enabled = true;
             dbwNum.Enabled = true;
+            startRead.Enabled = true;
         }
     }
     }
