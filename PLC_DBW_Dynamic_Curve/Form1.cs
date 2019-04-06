@@ -244,7 +244,28 @@ namespace PLC_DBW_Dynamic_Curve
 
         private void initialDrawing_Click(object sender, EventArgs e)
         {
-            InitChart();
+            if (string.IsNullOrEmpty(yBig.Text))
+            {
+
+                MessageBox.Show("请输入最大值坐标");
+            }
+            if (string.IsNullOrEmpty(ySmall.Text))
+            {
+
+                MessageBox.Show("请输入最小值坐标");
+            }
+            if (string.IsNullOrEmpty(jianJu.Text))
+            {
+
+                MessageBox.Show("请输入显示间距");
+            }
+         
+            else
+            {
+                InitChart();
+            }
+
+           
         }
 
         private void disconnectPlc_Click(object sender, EventArgs e)
