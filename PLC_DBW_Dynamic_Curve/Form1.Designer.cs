@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.connectPlc = new System.Windows.Forms.Button();
             this.startRead = new System.Windows.Forms.Button();
@@ -55,6 +55,13 @@
             this.status = new System.Windows.Forms.TextBox();
             this.disconnectPlc = new System.Windows.Forms.Button();
             this.finishRead = new System.Windows.Forms.Button();
+            this.yBig = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ySmall = new System.Windows.Forms.TextBox();
+            this.initialDrawing = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.jianJu = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -160,16 +167,16 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
             this.chart1.Location = new System.Drawing.Point(12, 177);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart1.Series.Add(series5);
             this.chart1.Size = new System.Drawing.Size(942, 240);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -265,6 +272,7 @@
             this.disconnectPlc.TabIndex = 18;
             this.disconnectPlc.Text = "断开";
             this.disconnectPlc.UseVisualStyleBackColor = true;
+            this.disconnectPlc.Click += new System.EventHandler(this.disconnectPlc_Click);
             // 
             // finishRead
             // 
@@ -274,21 +282,87 @@
             this.finishRead.TabIndex = 19;
             this.finishRead.Text = "暂停";
             this.finishRead.UseVisualStyleBackColor = true;
+            this.finishRead.Click += new System.EventHandler(this.finishRead_Click);
+            // 
+            // yBig
+            // 
+            this.yBig.Location = new System.Drawing.Point(87, 124);
+            this.yBig.Name = "yBig";
+            this.yBig.Size = new System.Drawing.Size(42, 21);
+            this.yBig.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(27, 127);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 12);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Y轴最大值";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(135, 127);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 12);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Y轴最小值";
+            // 
+            // ySmall
+            // 
+            this.ySmall.Location = new System.Drawing.Point(200, 124);
+            this.ySmall.Name = "ySmall";
+            this.ySmall.Size = new System.Drawing.Size(42, 21);
+            this.ySmall.TabIndex = 22;
+            // 
+            // initialDrawing
+            // 
+            this.initialDrawing.Location = new System.Drawing.Point(360, 122);
+            this.initialDrawing.Name = "initialDrawing";
+            this.initialDrawing.Size = new System.Drawing.Size(57, 23);
+            this.initialDrawing.TabIndex = 20;
+            this.initialDrawing.Text = "初始化图表";
+            this.initialDrawing.UseVisualStyleBackColor = true;
+            this.initialDrawing.Click += new System.EventHandler(this.initialDrawing_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(248, 127);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "显示间距";
+            // 
+            // jianJu
+            // 
+            this.jianJu.Location = new System.Drawing.Point(312, 124);
+            this.jianJu.Name = "jianJu";
+            this.jianJu.Size = new System.Drawing.Size(42, 21);
+            this.jianJu.TabIndex = 24;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 450);
+            this.Controls.Add(this.jianJu);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.initialDrawing);
+            this.Controls.Add(this.ySmall);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.yBig);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "西门子PLC数据实时曲线显示";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -317,6 +391,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox yBig;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox ySmall;
+        private System.Windows.Forms.Button initialDrawing;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox jianJu;
     }
 }
 

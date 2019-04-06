@@ -53,9 +53,9 @@ namespace PLC_DBW_Dynamic_Curve
             series1.ChartArea = "C1";
             this.chart1.Series.Add(series1);
             //设置图表显示样式
-            this.chart1.ChartAreas[0].AxisY.Minimum = 800;
-            this.chart1.ChartAreas[0].AxisY.Maximum = 1000;
-            this.chart1.ChartAreas[0].AxisX.Interval = 5;
+            this.chart1.ChartAreas[0].AxisY.Minimum =Convert.ToDouble(ySmall.Text);
+            this.chart1.ChartAreas[0].AxisY.Maximum = Convert.ToDouble(yBig.Text);
+            this.chart1.ChartAreas[0].AxisX.Interval = Convert.ToDouble(jianJu.Text);
             this.chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
             this.chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
             //设置标题
@@ -124,6 +124,8 @@ namespace PLC_DBW_Dynamic_Curve
                     plcRack.Enabled = false;
                     plcSlot.Enabled = false;
                     connectPlc.Enabled = false;
+                    status.Text = "连接成功";
+                    status.Enabled = false;
 
                 }
             }
@@ -152,11 +154,6 @@ namespace PLC_DBW_Dynamic_Curve
                 dbNum.Enabled = false;
                 dbwNum.Enabled = false;
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            InitChart();
         }
 
         private void ReadDbw()
@@ -243,6 +240,29 @@ namespace PLC_DBW_Dynamic_Curve
             int S7Int = S7.GetIntAt(Buffer, Pos);
             dbwValue.Text = System.Convert.ToString(S7Int);
 
+        }
+
+        private void initialDrawing_Click(object sender, EventArgs e)
+        {
+            InitChart();
+        }
+
+        private void disconnectPlc_Click(object sender, EventArgs e)
+        {
+
+            Client.Disconnect();
+            plcIp.Enabled = true;
+            plcRack.Enabled = true;
+            plcSlot.Enabled = true;
+            connectPlc.Enabled = true;
+            status.Text = "断开连接";
+        }
+
+        private void finishRead_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            dbNum.Enabled = true;
+            dbwNum.Enabled = true;
         }
     }
     }
