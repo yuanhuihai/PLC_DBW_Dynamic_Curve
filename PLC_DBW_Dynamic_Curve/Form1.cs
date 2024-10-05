@@ -158,26 +158,17 @@ namespace PLC_DBW_Dynamic_Curve
             }
         }
 
-        private void ReadDbw()
-        {
-            int DBNumber;
-            int Start = Convert.ToInt16(dbwNum.Text);
-            int Result;
-
-            DBNumber = System.Convert.ToInt32(dbNum.Text);
-            Result = Client.DBRead(DBNumber, Start, 2, Buffer);
-          
-
-        }
 
         private void getDbwValues()
         {
 
+            byte[] Buffer = new byte[2];
+        
+            Client.DBRead(Convert.ToInt16(dbNum.Text.ToString()), Convert.ToInt16(dbwNum.Text.ToString()), 2, Buffer);//读取DbwNum所对应的字的值
+      
+            dbwValue.Text= S7.GetIntAt(Buffer, 0).ToString();
 
-            ReadDbw();
-            int Pos = System.Convert.ToInt32(dbwNum.Text);
-            int S7Int = S7.GetIntAt(Buffer, Pos);
-            dbwValue.Text = System.Convert.ToString(S7Int);
+        
 
         }
 
